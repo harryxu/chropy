@@ -1,5 +1,3 @@
-
-
 /**
  * https://stackoverflow.com/a/12693636/157811
  */
@@ -16,7 +14,15 @@ function copyToClipboard (str, mimetype) {
  * Copy selection as plain text.
  */
 function copyPlainText(info, tab) {
-  copyToClipboard(info.selectionText)
+  chrome.tabs.executeScript({
+    file: './getcode.js'
+  }, function() {
+
+    chrome.tabs.executeScript({code: 'getPlainText()'}, function(results) {
+      copyToClipboard(results[0])
+    })
+
+  });
 }
 
 function copyLinkUrls(info, tab) {
@@ -25,7 +31,6 @@ function copyLinkUrls(info, tab) {
   }, function() {
 
     chrome.tabs.executeScript({code: 'getLinks()'}, function(results) {
-      console.log(results)
       copyToClipboard(results[0])
     })
 

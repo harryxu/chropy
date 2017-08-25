@@ -1,3 +1,7 @@
+function getPlainText () {
+  return document.getSelection().toString()
+}
+
 /**
  * Get Selected HTML.
  * 
@@ -18,7 +22,7 @@ function getHTMLOfSelection () {
   }
 }
 
-function getLinks() {
+function getLinks () {
   var html = getHTMLOfSelection()
   var parser = new DOMParser();
   var doc = parser.parseFromString(html, 'text/html')
