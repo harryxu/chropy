@@ -6,7 +6,7 @@
 
 操作示例：
 
-![](http://i.imgur.com/GIbkknU.gif)
+![](http://i.imgur.com/uO24UwU.gif)
 
 ## 素材来源:
 
