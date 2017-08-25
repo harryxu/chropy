@@ -1,22 +1,4 @@
-/**
- * Get Selected HTML.
- * 
- * https://stackoverflow.com/a/5084044/157811
- */
-function getHTMLOfSelection () {
-  var range
-  var selection = window.getSelection()
-  if (selection.rangeCount > 0) {
-    range = selection.getRangeAt(0)
-    var clonedSelection = range.cloneContents()
-    var div = document.createElement('div')
-    div.appendChild(clonedSelection)
-    return div.innerHTML
-  }
-  else {
-    return ''
-  }
-}
+
 
 /**
  * https://stackoverflow.com/a/12693636/157811
@@ -30,26 +12,22 @@ function copyToClipboard (str, mimetype) {
   document.execCommand('copy', false, null);
 }
 
+/**
+ * Copy selection as plain text.
+ */
 function copyPlainText(info, tab) {
-  console.log(info.selectionText)
   copyToClipboard(info.selectionText)
 }
 
-function copyLinkUrls() {
-  chrome.tabs.executeScript( {
-    code: "window.getSelection()"
-  }, function(results) {
-    var selection = results[0]
-    console.log(selection)
-    alert(selection.toString())
-  });
-  // alert(str)
-  // copyToClipboard(str)
-
+function copyLinkUrls(info, tab) {
 }
 
-function copyHtmlCode() {
-
+function copyHtmlCode(info, tab) {
+  chrome.tabs.executeScript( {
+    file: './getcode.js'
+  }, function(results) {
+    copyToClipboard(results[0])
+  });
 }
 
 chrome.contextMenus.create({
@@ -61,20 +39,20 @@ chrome.contextMenus.create({
 chrome.contextMenus.create({
   parentId: 'chropy',
   contexts: ['selection'] ,
-  title: 'Copy plain text',
+  title: 'Plain text',
   onclick: copyPlainText
 })
 
 chrome.contextMenus.create({
   parentId: 'chropy',
   contexts: ['selection'] ,
-  title: 'Copy link urls',
+  title: 'Link URLs',
   onclick: copyLinkUrls
 })
 
 chrome.contextMenus.create({
   parentId: 'chropy',
   contexts: ['selection'] ,
-  title: 'Copy html code',
+  title: 'HTML Code',
   onclick: copyHtmlCode
 })
