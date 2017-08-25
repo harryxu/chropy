@@ -18,4 +18,16 @@ function getHTMLOfSelection () {
   }
 }
 
-getHTMLOfSelection()
+function getLinks() {
+  var html = getHTMLOfSelection()
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(html, 'text/html')
+  var links = doc.querySelectorAll('a')
+  var urls = []
+
+  links.forEach(function (link) {
+    urls.push(link.href)
+  })
+  
+  return urls.join("\n")
+}

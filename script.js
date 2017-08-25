@@ -20,13 +20,27 @@ function copyPlainText(info, tab) {
 }
 
 function copyLinkUrls(info, tab) {
+  chrome.tabs.executeScript({
+    file: './getcode.js'
+  }, function() {
+
+    chrome.tabs.executeScript({code: 'getLinks()'}, function(results) {
+      console.log(results)
+      copyToClipboard(results[0])
+    })
+
+  });
 }
 
 function copyHtmlCode(info, tab) {
-  chrome.tabs.executeScript( {
+  chrome.tabs.executeScript({
     file: './getcode.js'
-  }, function(results) {
-    copyToClipboard(results[0])
+  }, function() {
+
+    chrome.tabs.executeScript({code: 'getHTMLOfSelection()'}, function(results) {
+      copyToClipboard(results[0])
+    })
+
   });
 }
 
