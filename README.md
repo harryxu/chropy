@@ -4,7 +4,11 @@
  * 链接的 URL 地址
  * HTML 代码
 
+操作示例：
+
 ![](http://i.imgur.com/GIbkknU.gif)
+
+## 素材来源:
 
 图标素材来源: https://www.iconfinder.com/icons/905652/clipboard_copy_duplicate_paste_icon
 
