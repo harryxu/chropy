@@ -52,7 +52,7 @@ function copyHtmlCode(info, tab) {
 chrome.contextMenus.create({
   id: 'chropy',
   contexts: ['selection'] ,
-  title: 'chropy'
+  title: 'chropy - Copy as:'
 })
 
 chrome.contextMenus.create({
