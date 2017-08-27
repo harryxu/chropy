@@ -3,6 +3,8 @@
  * 纯文本
  * 链接的 URL 地址 （复制选中部分有a标签的href）
  * HTML 代码  （复制选中部分内容为HTML代码）
+ 
+ chrome webstore 安装： https://chrome.google.com/webstore/detail/chropy/hccmamnolcopkikgehcioapekfbcddgm
 
 操作示例：
 
